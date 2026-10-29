@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apesoft | Managed IT, Cloud, Security & Compliance</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --text-main: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --danger: #ef4444;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-svg { width: 40px; height: 40px; }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span { color: var(--secondary-color); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--secondary-color); }
+
+        /* Login Buttons */
+        .btn-login {
+            background-color: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-login:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-admin {
+            background-color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-admin:hover {
+            background-color: #d97706;
+            border-color: #d97706;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8rem 5%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 1;
+            animation: slowZoom 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content { position: relative; z-index: 2; }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e2e8f0;
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background-color 0.2s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background-color: #d97706;
+        }
+
+        /* --- SECTIONS --- */
+        .section-container {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- GRIDS --- */
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card, .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-wrapper, .product-img-wrapper {
+            overflow: hidden;
+            height: 160px;
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .card-img, .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img, .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .card-content, .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3, .product-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .product-card h4 { color: var(--secondary-color); font-size: 1.1rem; }
+
+        .card p, .product-card p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .view-details {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: auto;
+            transition: gap 0.3s;
+        }
+
+        .card:hover .view-details, .product-card:hover .view-details {
+            gap: 10px;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .coming-soon-card { opacity: 0.85; }
+        .coming-soon-card .product-img { filter: grayscale(50%); }
+
+        /* --- COMPLIANCE BANNER --- */
+        .compliance-banner {
+            background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .compliance-banner h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+
+        .compliance-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--secondary-color);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- SCROLL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- MODALS --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 450px; /* Slimmer for login */
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalPop 0.3s ease-out;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Wider modal for details */
+        #detailsModal .modal-content { max-width: 700px; }
+        #adminModal .modal-content { max-width: 600px; }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .close-btn:hover { color: var(--accent-color); }
+
+        /* --- LOGIN FORM STYLES --- */
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-header h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .login-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+        .submit-btn:hover { background: var(--secondary-color); }
+        
+        .error-msg {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+            text-align: center;
+            background: #fee2e2;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* --- DETAILS & ADMIN STYLES --- */
+        .detail-header {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .detail-header h2 { color: var(--primary-color); font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .detail-header p { color: var(--secondary-color); font-weight: bold; }
+        .detail-body p { margin-bottom: 1rem; color: #475569; font-size: 1rem; }
+        .detail-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .detail-features li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+        .detail-features li::before { content: "✓"; position: absolute; left: 0; color: var(--secondary-color); font-weight: bold; }
+        
+        .action-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .action-btn:hover { background: #2563eb; }
+
+        .admin-title {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        .save-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .save-btn:hover { background: #059669; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .logo-svg { width: 50px; height: 50px; }
+        .footer-logo .logo-text { font-size: 1.8rem; color: var(--white); }
+        .footer-logo .logo-text span { color: var(--secondary-color); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 5rem 5%; }
+            .compliance-badges { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="20" fill="#3b82f6"/>
+                <path d="M50 20 L25 80 H40 L50 50 L60 80 H75 L50 20 Z" fill="#ffffff"/>
+                <circle cx="50" cy="20" r="8" fill="#f59e0b"/>
+                <circle cx="25" cy="80" r="8" fill="#f59e0b"/>
+                <circle cx="75" cy="80" r="8" fill="#f59e0b"/>
+                <circle cx="50" cy="50" r="6" fill="#f59e0b"/>
+            </svg>
+            <div class="logo-text">Ape<span>soft</span></div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <!-- LOGIN BUTTONS -->
+            <button class="btn-login" onclick="openLogin('client')">Client Login</button>
+            <button class="btn-admin" onclick="openLogin('admin')">Admin Portal</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 id="hero-title" class="reveal">Managed IT, Cloud, Security & Compliance</h1>
+            <p id="hero-subtitle" class="reveal">From custom software and legacy cloud migrations to NIST compliance, ISO 27001 readiness, firewalls, and surveillance installations. We secure and power your business.</p>
+            <a href="#services" class="cta-button reveal">Explore Services</a>
+        </div>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-container">
+        <h2 class="section-title reveal">Our IT & Security Services</h2>
+        <p class="section-subtitle reveal">Click on any service to view comprehensive details and features.</p>
+        
+        <div class="grid-services">
+            
+            <!-- 1. Custom Software -->
+            <div class="card reveal" onclick="showDetails('Custom Software', 'Bespoke Applications', 'We design and build custom software from the ground up to solve your specific business challenges. Our team handles everything from UI/UX design to backend architecture and deployment.', ['Tailored to your exact business processes', 'Scalable and secure architecture', 'Integration with existing legacy systems', 'Ongoing maintenance and support'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" alt="Custom Software" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Custom Software</h3>
+                    <p>Bespoke software designed for your exact business needs.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 2. Cloud Enablement & Migration -->
+            <div class="card reveal" onclick="showDetails('Cloud Enablement & Migrations', 'Legacy Modernization', 'Move your business to the cloud with zero downtime. We take your old, slow legacy applications and migrate them to modern, cloud-enabled infrastructure, improving speed and remote accessibility.', ['Lift-and-shift or re-architecture strategies', 'Zero-downtime migration planning', 'AWS, Azure, and Google Cloud expertise', 'Cost optimization post-migration'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop" alt="Cloud Migration" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Cloud Enablement & Migrations</h3>
+                    <p>Transfer legacy apps and data safely to modern cloud infrastructure.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 3. Hosting -->
+            <div class="card reveal" onclick="showDetails('Hosting Solutions', 'Enterprise Hosting', 'Reliable, high-performance hosting for your web applications, databases, and internal tools. We ensure 99.9% uptime, automated backups, and robust security.', ['Dedicated and shared hosting options', '24/7 server monitoring', 'Automated daily backups', 'DDoS protection included'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="Hosting Servers" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Hosting Solutions</h3>
+                    <p>Secure, high-uptime web and application hosting services.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 4. M365 -->
+            <div class="card reveal" onclick="showDetails('Microsoft 365 Implementation', 'M365 Deployment', 'We handle the complete deployment and configuration of Microsoft 365 for your organization. From email migration to Teams setup and security policies.', ['Email migration from legacy providers', 'Teams and SharePoint configuration', 'Multi-factor authentication (MFA) setup', 'User training and onboarding'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?q=80&w=2070&auto=format&fit=crop" alt="Microsoft 365" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Microsoft 365 Implementation</h3>
+                    <p>Complete setup, deployment, and management of M365.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 5. G-Suite -->
+            <div class="card reveal" onclick="showDetails('Google Workspace (G-Suite)', 'G-Suite Deployment', 'Seamless transition to Google Workspace. We help your team collaborate effectively with Gmail, Drive, Meet, and Docs, ensuring security and ease of use.', ['Domain verification and DNS setup', 'Data migration from Exchange or IMAP', 'Google Drive and Shared Drives setup', 'Admin console management'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?q=80&w=2027&auto=format&fit=crop" alt="Google Workspace" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Google Workspace (G-Suite)</h3>
+                    <p>Seamless implementation of G-Suite for collaborative teams.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 6. Cloud Security -->
+            <div class="card reveal" onclick="showDetails('Cloud Security', 'Advanced Threat Protection', 'Protect your cloud environments from unauthorized access and threats. We implement robust security postures, including IAM, encryption, and continuous monitoring.', ['Identity and Access Management (IAM)', 'Data encryption at rest and in transit', 'Continuous threat monitoring', 'Incident response planning'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop" alt="Cloud Security" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Cloud Security</h3>
+                    <p>Advanced threat protection and security protocols for cloud assets.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 7. Firewalls -->
+            <div class="card reveal" onclick="showDetails('Firewall Solutions', 'Network Perimeter Defense', 'We deploy and manage enterprise-grade firewalls to monitor and control incoming and outgoing network traffic based on predetermined security rules.', ['Next-Generation Firewall (NGFW) deployment', 'Intrusion Prevention Systems (IPS)', 'VPN configuration and management', 'Traffic filtering and reporting'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Firewall Security" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Firewall Solutions</h3>
+                    <p>Enterprise-grade hardware and software firewalls to block intrusions.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 8. Network Design -->
+            <div class="card reveal" onclick="showDetails('Network Design & Installation', 'Infrastructure Cabling', 'We design and install robust physical and wireless networks. Whether you are setting up a new office or upgrading existing infrastructure, we ensure reliable connectivity.', ['Structured cabling (Cat6/Fiber)', 'Enterprise Wi-Fi rollout', 'LAN/WAN architecture design', 'Network switches and routers setup'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop" alt="Network Cabling" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Network Design & Installation</h3>
+                    <p>Structured cabling, Wi-Fi optimization, and robust LAN/WAN design.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 9. Surveillance -->
+            <div class="card reveal" onclick="showDetails('Surveillance Systems', 'Physical Security', 'Protect your premises with modern IP-based CCTV systems. We handle the complete design, installation, and configuration of security cameras.', ['High-definition IP cameras', 'Remote viewing via mobile apps', 'NVR/DVR setup and storage', 'Motion detection alerts'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop" alt="CCTV Surveillance" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Surveillance Systems</h3>
+                    <p>Design and installation of modern IP CCTV and security cameras.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 10. NIST Compliance -->
+            <div class="card reveal" onclick="showDetails('NIST Compliance', 'Cybersecurity Framework', 'We help your organization align with the NIST Cybersecurity Framework. We perform gap analyses and implement the necessary controls to protect critical infrastructure.', ['NIST CSF gap analysis', 'Policy and procedure development', 'Risk assessment and management', 'Continuous compliance monitoring'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop" alt="NIST Compliance" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>NIST Compliance</h3>
+                    <p>Alignment with NIST Cybersecurity Framework to protect critical infrastructure.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 11. ISO 27001 Ready -->
+            <div class="card reveal" onclick="showDetails('ISO 27001 Ready', 'Information Security Management', 'Prepare your business for ISO 27001 certification. We provide the consulting, gap analysis, and implementation support needed to build an ISMS.', ['ISMS (Information Security Management System) setup', 'Risk assessment and treatment plans', 'Internal audit preparation', 'Staff security awareness training'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" alt="ISO 27001 Ready" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>ISO 27001 Ready</h3>
+                    <p>Gap analysis and implementation support to prepare your business for ISO 27001.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+            <!-- 12. Data Migrations -->
+            <div class="card reveal" onclick="showDetails('Data Migrations', 'Database & File Transfers', 'We migrate your critical data safely. Whether moving between cloud providers or from on-premise to the cloud, we ensure data integrity and zero downtime.', ['Database migration (SQL/NoSQL)', 'File server to cloud storage transfer', 'Data validation and integrity checks', 'Rollback strategies'])">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop" alt="Data Migration" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Data Migrations</h3>
+                    <p>Zero-downtime migration of critical databases and file servers.</p>
+                    <span class="view-details">View Details →</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COMPLIANCE BANNER -->
+    <section class="compliance-banner reveal">
+        <h3>Enterprise-Grade Security & Compliance</h3>
+        <p style="color: #cbd5e1; max-width: 800px; margin: 0 auto;">We help organizations meet the highest regulatory standards to protect sensitive data and avoid costly breaches.</p>
+        <div class="compliance-badges">
+            <div class="badge">
+                <span style="color: var(--accent-color); font-size: 1.5rem;">✓</span> NIST Framework Compliant
+            </div>
+            <div class="badge">
+                <span style="color: var(--accent-color); font-size: 1.5rem;">✓</span> ISO 27001 Ready
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="products-section">
+        <div class="section-container">
+            <h2 class="section-title reveal">Our Software Products</h2>
+            <p class="section-subtitle reveal">Click on any product to learn more about its capabilities.</p>
+            
+            <div class="grid-products">
+                
+                <!-- Product 1: ApeCRM -->
+                <div class="product-card reveal" onclick="showDetails('ApeCRM', 'Customer Relationship Management', 'A powerful, easy-to-use CRM designed to help you manage leads, track customer interactions, and close more deals. Built for teams of all sizes.', ['Customizable sales pipelines', 'Email and calendar integration', 'Contact management with timeline history', 'Automated task reminders and reporting'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="ApeCRM" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeCRM</h4>
+                        <p>Customer relationship management platform for sales teams.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 2: ApeTaxi -->
+                <div class="product-card reveal" onclick="showDetails('ApeTaxi', 'Fleet Management System', 'An intelligent dispatch and fleet management software designed for taxi and ride-hailing companies. Track drivers, manage bookings, and optimize routes.', ['Live GPS tracking', 'Automated driver dispatch', 'In-app payments for customers', 'Driver performance analytics'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1494783367193-149034c05e8f?q=80&w=2070&auto=format&fit=crop" alt="ApeTaxi" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeTaxi</h4>
+                        <p>Ride-hailing and fleet dispatch management software.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 3: ApeResort -->
+                <div class="product-card reveal" onclick="showDetails('ApeResort', 'Hospitality Management', 'A comprehensive resort and hotel management system. Handle reservations, housekeeping, billing, and guest experiences from a single dashboard.', ['Room booking and reservation calendar', 'Housekeeping status tracking', 'Integrated billing and invoicing', 'Channel manager integration'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" alt="ApeResort" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeResort</h4>
+                        <p>Hotel and resort management and booking platform.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 4: ApeERP -->
+                <div class="product-card reveal" onclick="showDetails('ApeERP', 'Enterprise Resource Planning', 'An all-in-one Enterprise Resource Planning (ERP) suite designed to streamline your core business processes across multiple departments.', ['Financial accounting and budgeting', 'Supply chain management', 'Manufacturing and inventory control', 'Business intelligence dashboards'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="ApeERP Analytics Dashboard" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeERP</h4>
+                        <p>Comprehensive Enterprise Resource Planning suite.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 5: ApeHRM -->
+                <div class="product-card reveal" onclick="showDetails('ApeHRM', 'Human Resources Management', 'A modern Human Resources Management (HRM) system to manage your workforce. From recruitment to payroll, simplify HR tasks.', ['Employee self-service portal', 'Attendance and leave management', 'Payroll processing', 'Performance appraisal tracking'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="ApeHRM" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeHRM</h4>
+                        <p>Human Resources and payroll management system.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 6: ApeFinance -->
+                <div class="product-card reveal" onclick="showDetails('ApeFinance', 'Financial Management', 'A powerful accounting and financial management tool designed to give you complete control over your company\\'s finances.', ['General ledger and bookkeeping', 'Accounts payable and receivable', 'Tax management and reporting', 'Bank reconciliation'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop" alt="ApeFinance" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeFinance</h4>
+                        <p>Accounting and financial management software.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 7: Ape -->
+                <div class="product-card reveal" onclick="showDetails('Ape', 'Core Business Platform', 'Our foundational software platform that can be customized and scaled for any industry. Ape acts as the central hub for all your operational modules.', ['Modular architecture', 'Extensive API support', 'Role-based access control', 'Cross-platform compatibility (Web/Mobile)'])">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2070&auto=format&fit=crop" alt="Ape" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>Ape</h4>
+                        <p>The core foundational platform for custom business apps.</p>
+                        <span class="view-details">View Details →</span>
+                    </div>
+                </div>
+
+                <!-- Product 8: ApeERP (Coming Soon) -->
+                <div class="product-card reveal coming-soon-card" onclick="showDetails('ApeERP (Next-Gen)', 'Coming Soon', 'We are currently developing the next generation of ApeERP. It will feature advanced AI-driven forecasting, deeper automation, and a completely redesigned user interface. Sign up to be notified when it launches.', ['AI-powered demand forecasting', 'Advanced robotic process automation', 'New modern UI/UX', 'Enhanced cloud-native architecture'])">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="ApeERP Coming Soon" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <h4>ApeERP</h4>
+                        <p>The next-generation ERP platform. Launching soon.</p>
+                        <span class="view-details">Learn More →</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-logo reveal">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="20" fill="#3b82f6"/>
+                <path d="M50 20 L25 80 H40 L50 50 L60 80 H75 L50 20 Z" fill="#ffffff"/>
+                <circle cx="50" cy="20" r="8" fill="#f59e0b"/>
+                <circle cx="25" cy="80" r="8" fill="#f59e0b"/>
+                <circle cx="75" cy="80" r="8" fill="#f59e0b"/>
+                <circle cx="50" cy="50" r="6" fill="#f59e0b"/>
+            </svg>
+            <div class="logo-text">Ape<span>soft</span></div>
+        </div>
+        <p class="reveal">&copy; 2023 Apesoft Organization. All rights reserved.</p>
+        <p class="reveal">Custom Software, IT Infrastructure, Cloud Security & Compliance.</p>
+    </footer>
+
+    <!-- --- LOGIN MODAL --- -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLogin()">&times;</span>
+            <div class="login-header">
+                <h2 id="login-title">Client Portal Login</h2>
+                <p id="login-subtitle">Access your Apesoft applications.</p>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="login-email" placeholder="you@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <div class="error-msg" id="login-error">Invalid credentials. Please try again.</div>
+                <button type="submit" class="submit-btn" id="login-submit-btn">Sign In</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: #64748b;">
+                Don't have an account? <a href="#" style="color: var(--secondary-color); text-decoration: none;">Contact Sales</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- --- DETAILS MODAL --- -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDetails()">&times;</span>
+            <div class="detail-header">
+                <h2 id="modal-title">Product Title</h2>
+                <p id="modal-subtitle">Product Subtitle</p>
+            </div>
+            <div class="detail-body">
+                <p id="modal-desc">Detailed description goes here.</p>
+                <h4 style="margin-bottom: 0.5rem; color: var(--primary-color);">Key Features & Deliverables:</h4>
+                <ul class="detail-features" id="modal-features">
+                    <!-- Features injected here -->
+                </ul>
+                <button class="action-btn" id="modal-action-btn" onclick="alert('Apesoft sales team has been notified of your interest! We will contact you shortly.')">Request Information / Get a Quote</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIMULATED ADMIN PORTAL MODAL -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAdmin()">&times;</span>
+            <h2 class="admin-title">Admin Dashboard</h2>
+            <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Edit the fields below to customize the live website instantly.</p>
+            
+            <div class="form-group">
+                <label>Hero Title</label>
+                <input type="text" id="input-hero-title" value="Managed IT, Cloud, Security & Compliance">
+            </div>
+            <div class="form-group">
+                <label>Hero Subtitle</label>
+                <textarea id="input-hero-subtitle" rows="2">From custom software and legacy cloud migrations to NIST compliance, ISO 27001 readiness, firewalls, and surveillance installations. We secure and power your business.</textarea>
+            </div>
+            
+            <button class="save-btn" onclick="saveChanges()">Save & Update Website</button>
+            <button class="save-btn" style="background: #64748b; margin-top: 0.5rem;" onclick="closeAdmin()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- SCROLL ANIMATION LOGIC ---
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); });
+
+        // --- LOGIN LOGIC ---
+        let loginType = 'client'; // 'client' or 'admin'
+
+        function openLogin(type) {
+            loginType = type;
+            const modal = document.getElementById('loginModal');
+            const title = document.getElementById('login-title');
+            const subtitle = document.getElementById('login-subtitle');
+            const errorMsg = document.getElementById('login-error');
+            
+            // Reset form
+            document.getElementById('loginForm').reset();
+            errorMsg.style.display = 'none';
+
+            if (type === 'admin') {
+                title.innerText = "Administrator Login";
+                subtitle.innerText = "Secure access for Apesoft staff.";
+                // For demo purposes, auto-fill the admin credentials
+                document.getElementById('login-email').value = "admin@apesoft.com";
+                document.getElementById('login-password').value = "admin123";
+            } else {
+                title.innerText = "Client Portal Login";
+                subtitle.innerText = "Access your Apesoft applications.";
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorMsg = document.getElementById('login-error');
+
+            // Simulated Authentication Logic
+            if (loginType === 'admin') {
+                // Hardcoded admin credentials for demo
+                if (email === 'admin@apesoft.com' && password === 'admin123') {
+                    closeLogin();
+                    // Open Admin Dashboard
+                    document.getElementById('input-hero-title').value = document.getElementById('hero-title').innerText;
+                    document.getElementById('input-hero-subtitle').value = document.getElementById('hero-subtitle').innerText;
+                    document.getElementById('adminModal').style.display = 'flex';
+                } else {
+                    errorMsg.innerText = "Invalid Admin Credentials. Try: admin@apesoft.com / admin123";
+                    errorMsg.style.display = 'block';
+                }
+            } else {
+                // Simulated Client Login (accepts any valid-looking email/pass)
+                if (email.length > 5 && password.length >= 6) {
+                    closeLogin();
+                    alert("Welcome back! Redirecting to your Apesoft Client Dashboard...\n\n(Note: This is a front-end demo. In a real app, this would redirect to the specific SaaS platform).");
+                } else {
+                    errorMsg.innerText = "Please enter a valid email and password (min 6 characters).";
+                    errorMsg.style.display = 'block';
+                }
+            }
+        }
+
+        // --- DETAILS MODAL LOGIC ---
+        function showDetails(title, subtitle, description, featuresArray) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-subtitle').innerText = subtitle;
+            document.getElementById('modal-desc').innerText = description;
+
+            const actionBtn = document.getElementById('modal-action-btn');
+            if(title.includes('Coming Soon') || subtitle === 'Coming Soon') {
+                actionBtn.innerText = "Notify Me When Available";
+                actionBtn.style.backgroundColor = "var(--accent-color)";
+                actionBtn.style.color = "var(--primary-color)";
+            } else {
+                actionBtn.innerText = "Request Information / Get a Quote";
+                actionBtn.style.backgroundColor = "var(--secondary-color)";
+                actionBtn.style.color = "white";
+            }
+
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = ''; 
+            featuresArray.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerText = feature;
+                featuresList.appendChild(li);
+            });
+
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function closeDetails() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+
+        // --- ADMIN PORTAL SAVE LOGIC ---
+        function closeAdmin() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function saveChanges() {
+            document.getElementById('hero-title').innerText = document.getElementById('input-hero-title').value;
+            document.getElementById('hero-subtitle').innerText = document.getElementById('input-hero-subtitle').value;
+            closeAdmin();
+            alert("Website content updated successfully from Admin Dashboard!");
+        }
+
+        // Close modals if user clicks outside of the content box
+        window.onclick = function(event) {
+            const detailsModal = document.getElementById('detailsModal');
+            const adminModal = document.getElementById('adminModal');
+            const loginModal = document.getElementById('loginModal');
+            
+            if (event.target === detailsModal) closeDetails();
+            if (event.target === adminModal) closeAdmin();
+            if (event.target === loginModal) closeLogin();
+        }
+    </script>
+</body>
+</html>

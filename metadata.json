@@ -1,0 +1,7 @@
+{
+  "name": "Apesoft Enterprise IT & Cloud Solutions",
+  "description": "Enterprise managed IT, cloud migrations, cybersecurity, NIST & ISO 27001 compliance, and full business software suite.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
